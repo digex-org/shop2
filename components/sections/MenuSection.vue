@@ -17,16 +17,16 @@
             <!-- Submenu -->
             <div
                 v-if="activeMenu === menuItem.name"
-                class="absolute left-0 top-14 right-0 flex grid-rows-2 justify-end items-center mt-2 bg-white shadow-md z-50 p-5 pr-32 text-sm font-semibold text-gray-800"
+                class="absolute left-0 top-14 right-0 flex grid-rows-2 justify-center lg:justify-end items-center mt-2 bg-white pr-0 shadow-md z-50 flex-col p-5 lg:pr-6 xl:pr-32 md:flex-row text-sm font-semibold text-gray-800"
             >
-              <div class="flex justify-center items-baseline mr-24">
+              <div class="flex justify-center items-baseline mr-6 lg:mr-24">
                 <div
                     v-for="(link, linkIndex) in menuItem.subCategory"
                     :key="linkIndex"
                     class="relative group mr-5"
                 >
                   <!-- Subcategory Name -->
-                  <div class="hover:text-gray-600 flex items-center justify-between w-full lg:w-auto border-b-2  pr-32">
+                  <div class="hover:text-gray-600 flex items-center justify-between w-full lg:w-auto border-b-2 pr-12 lg:pr-24 xl:pr-32">
                     {{ link.name }}
                   </div>
 

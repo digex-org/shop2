@@ -1,10 +1,15 @@
-<script setup lang="ts">
-
-</script>
-
 <template>
-
+  <img :src="bannerImage" alt="banner">
 </template>
+
+<script setup lang="ts">
+  defineProps({
+    bannerImage: {
+      type: String,
+      required: true
+    }
+  });
+</script>
 
 <style scoped>
 

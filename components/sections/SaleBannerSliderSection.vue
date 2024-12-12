@@ -5,7 +5,7 @@
       :loop="true"
       :autoplay="{ delay: 5000 }"
       class="w-full"
-      :class="isProductSlide ? 'h-[360px]' : ' h-screen'"
+      :class="responsiveHeight"
       :pagination="{
         el: isProductSlide,
         type: 'bullets',
@@ -19,65 +19,44 @@
     <swiper-slide
         v-for="(slide, index) in slides"
         :key="index"
-        class="relative flex slides-center justify-start bg-cover bg-center h-2/3"
+        class="relative flex items-center justify-start bg-cover bg-center"
         :style="{ backgroundImage: `url(${slide.backgroundImage})` }"
     >
       <div v-if="slideType === 'image'">
         <div class="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent"></div>
-          <div class="relative z-10 max-w-screen-xl px-8 py-16 text-white md:py-24 lg:px-16">
-          <h1 class="text-4xl font-bold lg:text-[255px] leading-[18rem]">{{ slide.title }}</h1>
-          <p class="mt-4 text-lg lg:text-[5.5rem] tracking-[35px] leading-[4.5rem]">{{ slide.subtitle }}</p>
+        <div class="relative z-10 max-w-screen-xl px-8 py-16 text-white md:py-24 lg:px-16">
+          <h1 class="text-6xl lg:text-9xl xl:text-[255px] leading-[3rem] lg:leading-[5rem] xl:leading-[18rem] font-bold">
+            {{ slide.title }}
+          </h1>
+          <p class="mt-4 text-3xl lg:text-5xl xl:text-[5.5rem] tracking-wide md:tracking-[15px] lg:tracking-[35px] leading-6 lg:leading-[4.5rem]">
+            {{ slide.subtitle }}
+          </p>
         </div>
       </div>
 
       <div v-else>
         <div class="group relative">
-<!--          <NuxtLink :to="{ name: 'product-product', params: { product: slide.id } }">-->
-            <div class="flex flex-col slides-center">
-              <img
-                  :src="slide.image"
-                  alt="Product Image"
-                  class="w-64 object-cover mb-4 rounded-lg shadow-md"
-                  loading="lazy"
-              />
-              <p class="text-gray-800 font-semibold">{{ slide.title }}</p>
-              <p class="font-semibold" :class="slide.originalPrice ? 'text-red-500' : 'text-gray-800' ">
-                <span>FROM ${{ slide.price }}</span>
-                <span
-                    v-if="slide.originalPrice"
-                    class="text-gray-400 ml-2 line-through"
-                >
-                    ${{ slide.originalPrice }}
-                  </span>
-              </p>
-            </div>
-<!--          </NuxtLink>-->
-
-<!--          <div class="absolute top-2 right-2 flex flex-col slides-center opacity-0 group-hover transition-opacity duration-300">-->
-<!--            &lt;!&ndash; Wishlist Icon &ndash;&gt;-->
-<!--            <button-->
-<!--                @click.stop="addToWishlist(slide)"-->
-<!--                class="transparent p-2 rounded-full shadow-lg hover-icon"-->
-<!--            >-->
-<!--              <i class="fas fa-heart text-white"></i>-->
-<!--            </button>-->
-
-<!--            &lt;!&ndash; Basket Icon &ndash;&gt;-->
-<!--            <button-->
-<!--                @click.stop="addToBasket(slide)"-->
-<!--                class="transparent p-2 rounded-full shadow-lg hover-icon"-->
-<!--            >-->
-<!--              <i class="fas fa-shopping-cart text-white"></i>-->
-<!--            </button>-->
-
-<!--            &lt;!&ndash; Quick View Icon &ndash;&gt;-->
-<!--            <button-->
-<!--                @click.stop="openQuickView(slide)"-->
-<!--                class="transparent p-2 rounded-full shadow-lg hover-icon"-->
-<!--            >-->
-<!--              <i class="fas fa-eye text-white"></i>-->
-<!--            </button>-->
-<!--          </div>-->
+          <div class="flex flex-col items-center">
+            <img
+                :src="slide.image"
+                alt="Product Image"
+                class="w-40 md:w-56 lg:w-64 object-cover mb-4 rounded-lg shadow-md"
+                loading="lazy"
+            />
+            <p class="text-gray-800 font-semibold">{{ slide.title }}</p>
+            <p
+                class="font-semibold"
+                :class="slide.originalPrice ? 'text-red-500' : 'text-gray-800'"
+            >
+              <span>FROM ${{ slide.price }}</span>
+              <span
+                  v-if="slide.originalPrice"
+                  class="text-gray-400 ml-2 line-through"
+              >
+                ${{ slide.originalPrice }}
+              </span>
+            </p>
+          </div>
         </div>
       </div>
     </swiper-slide>
@@ -89,7 +68,7 @@
 </template>
 
 <script setup>
-import { defineProps } from 'vue';
+import { defineProps, computed } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
@@ -104,7 +83,7 @@ const props = defineProps({
     required: true,
   },
   slideType: {
-    type: String
+    type: String,
   },
   settings: {
     type: Object,
@@ -113,48 +92,51 @@ const props = defineProps({
 });
 
 const isProductSlide = computed(() =>
-    props.slides.some(item => item.image && item.price) // Check if item has an image and price
+    props.slides.some((item) => item.image && item.price) // Check if item has an image and price
+);
+
+const responsiveHeight = computed(() =>
+    isProductSlide.value
+        ? 'h-[280px] md:h-[330px] lg:h-[365px]'
+        : 'h-[300px] md:h-[90vh] lg:h-screen'
 );
 </script>
 
 <style>
-/* Custom Swiper styles (optional) */
 .swiper-pagination {
-  bottom: 0!important;
-  text-align: center!important;
+  bottom: 0 !important;
+  text-align: center !important;
 }
 
 .swiper-pagination-bullet {
   width: 16%;
   height: 8px;
   margin: 0 !important;
-  background-color: #D9D9D9 !important;
+  background-color: #d9d9d9 !important;
   opacity: 0.6 !important;
   border-radius: 0;
 }
 
 .swiper-pagination-bullet-active {
-  opacity: 1!important; /* Active line becomes fully opaque */
-  background-color: #757575!important; /* Active line color */
+  opacity: 1 !important; /* Active line becomes fully opaque */
+  background-color: #757575 !important; /* Active line color */
 }
-/* Positioning navigation arrows outside the slide */
+
 .swiper-button-next,
 .swiper-button-prev {
-  position: absolute!important;
-  top: 50%!important;
-  z-index: 10!important;
-  color: black!important;
-  transform: translateY(-50%)!important;
+  position: absolute !important;
+  top: 50% !important;
+  z-index: 10 !important;
+  color: black !important;
+  transform: translateY(-50%) !important;
 }
 
 .swiper-button-next {
-  right: -30px!important;  /* Moves the next button outside */
+  right: -30px !important; /* Moves the next button outside */
 }
 
 .swiper-button-prev {
-  left: -30px!important;   /* Moves the previous button outside */
+  left: -30px !important; /* Moves the previous button outside */
 }
-.swiper-slide {
-  pointer-events: none; /* Prevent interaction with the clipped slides */
-}
+
 </style>
