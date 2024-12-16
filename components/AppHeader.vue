@@ -1,7 +1,7 @@
 <template>
   <header class="p-4 bg-black relative">
     <div class="container justify-between md:m-auto flex md:justify-end items-center flex-wrap w-full">
-      <div class="flex md:m-auto">
+      <div class="flex lg:m-auto">
         <!-- Logo Section -->
         <div class="flex justify-between items-center ml-auto w-full md:w-auto">
           <div class="text-center">

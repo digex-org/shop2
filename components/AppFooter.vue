@@ -27,7 +27,7 @@
           <font-awesome-icon :icon="['fab', 'youtube']" class="text-xl sm:text-2xl hover:text-teal-400 cursor-pointer" />
           <font-awesome-icon :icon="['fab', 'tiktok']" class="text-xl sm:text-2xl hover:text-teal-400 cursor-pointer" />
         </div>
-        <div class="text-[80px] sm:text-[140px] font-bold mb-6 text-gradient py-2">
+        <div class="text-[60px] sm:text-[102px] font-bold mb-6 text-gradient py-2">
           <h2>Follow Us</h2>
         </div>
         <div class="text-sm">

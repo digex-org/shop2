@@ -74,7 +74,7 @@ const isProductSlide = computed(() =>
 
 const responsiveHeight = computed(() =>
     isProductSlide.value
-        ? 'h-[280px] md:h-[330px] lg:h-[365px]'
+        ? 'h-[340px] md:h-[360px] lg:h-[365px]'
         : 'h-[300px] md:h-[90vh] lg:h-screen'
 );
 </script>

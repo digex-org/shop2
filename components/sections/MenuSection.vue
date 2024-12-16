@@ -1,9 +1,9 @@
 <template>
   <nav>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+    <div class="max-w-7xl mx-auto px-0 md:px-4 lg:px-8"
          @mouseleave="closeMenu"
     >
-      <div class="flex items-center py-4">
+      <div class="flex items-start md:items-center py-4 flex-col md:flex-row">
         <div
             v-for="(menuItem, index) in categories"
             :key="index"
@@ -19,9 +19,9 @@
             <!-- Submenu -->
             <div
                 v-if="activeMenu === menuItem.name"
-                class="absolute left-0 top-14 right-0 flex grid-rows-2 justify-center lg:justify-end items-center mt-2 bg-white pr-0 shadow-md z-50 flex-col p-5 lg:pr-6 xl:pr-32 md:flex-row text-sm font-semibold text-gray-800"
+                class="absolute left-0 right-0 lg:left-auto lg:right-auto top-14 flex grid-rows-1 md:grid-rows-2 justify-center lg:justify-end items-center mt-2 bg-white pr-0 shadow-md z-50 flex-col p-5 lg:pr-6 xl:pr-32 md:flex-row text-sm font-semibold text-gray-800"
             >
-              <div class="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-4 justify-center items-baseline mr-6 lg:mr-24 max-w-[44rem]">
+              <div class="grid gap-4 grid-cols-2 sm:grid-cols-4 md:grid-cols-4 justify-center items-baseline mr-6 lg:mr-24 max-w-[44rem]">
                 <div
                     v-for="(link, linkIndex) in menuItem.subCategory"
                     :key="linkIndex"
@@ -43,7 +43,7 @@
                   </div>
                 </div>
               </div>
-              <img src="/images/yoga.png" alt="subcategory image" class="object-contain">
+              <img src="/images/yoga.png" alt="subcategory image" class="object-contain hidden md:block">
             </div>
         </div>
       </div>
