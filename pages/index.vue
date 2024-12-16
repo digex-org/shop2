@@ -2,14 +2,17 @@
   <div>
     <MenuSection  class="hidden"/>
     <SaleBannerSliderSection class="mb-7" :slides="slides" :slide-type="slideTypeImage"/>
-    <div class="text-center mb-5">
-      <h2 class="text-3xl font-bold">TRENDY LOOK</h2>
-      <h4>You will definitely like this.</h4>
-    </div>
+    <HeadingSection :header="'TRENDY LOOK'" :description="'You will definitely like this.'"/>
     <SaleBannerSliderSection class="mb-7 container max-w-6xl" :slides="products" :slide-type="slideTypeProduct" :settings="productSettings" />
     <VideoSection :video="'/videos/video.mp4'" />
     <BannerSection class="w-full my-5 object-cover h-3/4" :banner-image="'/images/banner2.png'" />
+    <HeadingSection class="mt-7" :header="'TOWARDS INSPIRATION'"/>
+    <NewProducts class="container m-auto max-w-6xl" :limit="3"/>
     <BannerSection class="w-full my-5 object-cover h-3/4" :banner-image="'/images/banner3.png'" />
+    <HeadingSection class="mt-7" :header="'TOWARDS INSPIRATION'"/>
+    <CategoriesSection class="max-w-6xl m-auto container" :limit="3" />
+    <BannerSection class="w-full my-5 object-cover h-3/4" :banner-image="'/images/banner2.png'" />
+
 <!--    <SliderSection class="py-7" :items="videoSlides" :settings="videoSettings" />-->
 <!--    <div class="container mx-auto px-4">-->
 <!--      <h3 class="text-center font-bold text-xl mt-8">Shop by Department</h3>-->
@@ -25,6 +28,7 @@
 <script setup>
 import { useCategory } from '~/composables/useCategory';
 import {useProduct} from "~/composables/useProduct.js";
+import '@fortawesome/fontawesome-svg-core/styles.css';
 
 const { categories } = useCategory();
 

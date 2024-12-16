@@ -8,6 +8,7 @@ import AppFooter from "~/components/AppFooter.vue";
     <AppHeader />
     <slot />
     <AppFooter />
+    <ScrollToTopButton />
   </div>
 </template>
 

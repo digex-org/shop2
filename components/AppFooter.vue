@@ -1,106 +1,125 @@
 <template>
-  <footer class="bg-gray-100 text-gray-800 pt-8 mt-8">
-    <div class="container mx-auto px-4 pb-4">
-      <div class="flex flex-col md:flex-row justify-center items-center mb-8 border-b pb-8">
-        <div class="text-center md:text-left mb-4 md:mb-0 mr-5">
-          <h4 class="text-lg font-semibold">Sign up for access to new style edits and sales.</h4>
+  <footer
+      class="bg-black text-white py-10 bg-no-repeat bg-left-bottom"
+      :style="{ backgroundImage: `url(/images/gradient.png)` }"
+  >
+    <div class="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 justify-between px-4 sm:px-6 lg:px-8">
+      <!-- Left Section -->
+      <div class="space-y-6">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-normal !leading-[40px] sm:!leading-[50px]">
+          Ready to <span class="font-black">revolutionise</span> your business communications <br />
+          with <span class="font-black">unrivalled speed</span>?
+        </h2>
+        <!-- Get In Touch Button -->
+        <div class="my-6">
+          <a
+              href="#"
+              class="text-gradient-2 text-white px-8 sm:px-12 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold hover:bg-teal-500 transition"
+          >
+            Get In Touch
+          </a>
         </div>
-        <div class="flex flex-col md:flex-row items-center">
-          <input
-              type="email"
-              placeholder="Email Address"
-              class="border border-gray-300 rounded-l px-4 py-2 w-full md:w-auto mb-4 md:mb-0"
-          />
-          <button class="bg-black text-white px-4 py-2 rounded-r hover:bg-gray-800 w-full md:w-auto">
-            Submit
-          </button>
+        <!-- Social Media Icons -->
+        <div class="flex justify-start space-x-4 sm:space-x-6 py-5 px-1">
+          <font-awesome-icon :icon="['fab', 'instagram']" class="text-xl sm:text-2xl hover:text-teal-400 cursor-pointer" />
+          <font-awesome-icon :icon="['fab', 'twitter']" class="text-xl sm:text-2xl hover:text-teal-400 cursor-pointer" />
+          <font-awesome-icon :icon="['fab', 'facebook']" class="text-xl sm:text-2xl hover:text-teal-400 cursor-pointer" />
+          <font-awesome-icon :icon="['fab', 'youtube']" class="text-xl sm:text-2xl hover:text-teal-400 cursor-pointer" />
+          <font-awesome-icon :icon="['fab', 'tiktok']" class="text-xl sm:text-2xl hover:text-teal-400 cursor-pointer" />
+        </div>
+        <div class="text-[80px] sm:text-[140px] font-bold mb-6 text-gradient py-2">
+          <h2>Follow Us</h2>
+        </div>
+        <div class="text-sm">
+          <p class="font-extrabold">PRIVACY POLICY</p>
+          <p>
+            Copyright © 2024 <span class="font-extrabold">DIGEX LLC Inc.</span> Yerevan, Armenia.
+          </p>
+          <p>All rights reserved.</p>
         </div>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <!-- About Us -->
+
+      <!-- Right Section -->
+      <div class="flex flex-col justify-between space-y-6">
+        <!-- Newsletter -->
         <div>
-          <h3 class="font-semibold mb-4">About Us</h3>
-          <ul class="space-y-2">
-            <li><a href="#" class="hover:text-blue-500">About Joss & Main</a></li>
-            <li><a href="#" class="hover:text-blue-500">Joss & Main Catalog</a></li>
-            <li><a href="#" class="hover:text-blue-500">Wayfair Professional</a></li>
-            <li><a href="#" class="hover:text-blue-500">Careers</a></li>
-            <li><a href="#" class="hover:text-blue-500">Gift Cards</a></li>
-            <li><a href="#" class="hover:text-blue-500">Free Design Services</a></li>
-            <li><a href="#" class="hover:text-blue-500">Joss & Main Credit Card</a></li>
-            <li><a href="#" class="hover:text-blue-500">Investor Relations</a></li>
-          </ul>
+          <h3 class="text-xl sm:text-2xl font-light">
+            Subscribe to our newsletter for daily industry insights.
+          </h3>
+          <div class="my-4 flex">
+            <input
+                type="email"
+                placeholder="Email address *"
+                class="w-full bg-transparent border-white border text-white px-4 py-2 focus:outline-none"
+            />
+          </div>
+          <!-- Help & Company Links -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 mt-6 gap-4 text-sm">
+            <div>
+              <h4 class="font-bold mb-2 text-gray-500">Help</h4>
+              <ul class="space-y-1">
+                <li><a href="#" class="hover:underline">Contact Us</a></li>
+                <li><a href="#" class="hover:underline">FAQs</a></li>
+                <li><a href="#" class="hover:underline">Order Support</a></li>
+                <li><a href="#" class="hover:underline">Shipping</a></li>
+                <li><a href="#" class="hover:underline">Returns</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="font-bold mb-2 text-gray-600">The Company</h4>
+              <ul class="space-y-1">
+                <li><a href="#" class="hover:underline">Jobs</a></li>
+                <li><a href="#" class="hover:underline">Locations</a></li>
+                <li><a href="#" class="hover:underline">My Account</a></li>
+                <li><a href="#" class="hover:underline">Terms & Conditions</a></li>
+                <li><a href="#" class="hover:underline">Privacy Policy</a></li>
+              </ul>
+            </div>
+          </div>
         </div>
 
-        <!-- Customer Service -->
-        <div>
-          <h3 class="font-semibold mb-4">Customer Service</h3>
-          <ul class="space-y-2">
-            <li><a href="#" class="hover:text-blue-500">My Orders</a></li>
-            <li><a href="#" class="hover:text-blue-500">My Account</a></li>
-            <li><a href="#" class="hover:text-blue-500">Return Policy</a></li>
-            <li><a href="#" class="hover:text-blue-500">Accessibility Statement</a></li>
-            <li><a href="#" class="hover:text-blue-500">Help Center</a></li>
-            <li><a href="#" class="hover:text-blue-500">Product Recalls</a></li>
-          </ul>
-        </div>
-
-        <!-- Contact Us -->
-        <div>
-          <h3 class="font-semibold mb-4">Contact Us</h3>
+        <!-- Contact Info -->
+        <div class="space-y-4">
           <div>
-            <button class="bg-black text-white px-4 py-2 rounded mb-4 w-full hover:bg-gray-800">
-              Quick Help
-            </button>
-            <button class="bg-black text-white px-4 py-2 rounded w-full hover:bg-gray-800">
-              Call Us
-            </button>
+            <h3 class="text-2xl font-light mb-2">Call Us</h3>
+            <p class="text-sm text-gray-600 mb-1">Phone:</p>
+            <p>+374 55 20 20 20</p>
+            <p class="text-sm text-gray-600 mb-1 mt-4">Email:</p>
+            <p>info@digexllc.org</p>
           </div>
-          <div class="mt-4 text-sm">
-            <p class="mb-2">
-              <strong>Customer Service</strong>
-              <br />
-              Mon-Fri: 8:00 AM - 8:00 PM
-              <br />
-              Sat: 8:00 AM - 8:00 PM
-              <br />
-              Sun: 9:00 AM - 6:00 PM
-              <br />
-              <span class="text-gray-500">All times Eastern</span>
-            </p>
-            <p>
-              <strong>Shopping Assistance</strong>
-              <br />
-              Mon-Fri: 8:00 AM - 11:55 PM
-              <br />
-              Sat: 8:00 AM - 8:00 PM
-              <br />
-              Sun: 9:00 AM - 6:00 PM
-              <br />
-              <span class="text-gray-500">All times Eastern</span>
-            </p>
+          <div>
+            <select
+                class="bg-transparent text-white py-2 rounded-md focus:outline-none"
+            >
+              <option>English (US)</option>
+              <option>Español</option>
+              <option>Français</option>
+              <option>Deutsch</option>
+            </select>
           </div>
-        </div>
-      </div>
-    </div>
-    <div class="bg-gray-800 text-white py-6">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <p>&copy; 2023 Joss & Main Clone. All rights reserved.</p>
-        <div class="flex justify-center space-x-4 mt-4">
-          <a href="#" class="hover:underline">Privacy Policy</a>
-          <a href="#" class="hover:underline">Terms of Service</a>
-          <a href="#" class="hover:underline">Contact Us</a>
+          <div class="text-center">
+            <a href="#" class="text-white hover:text-green-500">
+              <i class="fas fa-chevron-up text-2xl"></i>
+            </a>
+          </div>
         </div>
       </div>
     </div>
   </footer>
 </template>
 
-  <script setup>
-  </script>
+<script setup>
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+</script>
 
-  <style scoped>
-    /* Add any additional styles if needed */
-  </style>
-
-
+<style scoped>
+.text-gradient {
+  background: linear-gradient(160deg, #29B6F4 30%, #E1C9DF 41%, #ee00ff 87%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.text-gradient-2 {
+  background: linear-gradient(160deg, #40DB5C, #03C7FD, #40DB5C);
+  -webkit-text-fill-color: white;
+}
+</style>

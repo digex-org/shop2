@@ -1,5 +1,5 @@
 <template>
-  <div class="relative w-full h-0 pb-[56.25%]">
+  <div class="relative w-full h-0 pb-[44.25%]">
     <video
         :src="video"
         autoplay

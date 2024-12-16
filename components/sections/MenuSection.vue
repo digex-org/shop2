@@ -1,6 +1,8 @@
 <template>
   <nav>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+         @mouseleave="closeMenu"
+    >
       <div class="flex items-center py-4">
         <div
             v-for="(menuItem, index) in categories"
@@ -9,8 +11,8 @@
         >
           <!-- Category Button -->
           <button
-              @click="toggleMenu(menuItem.name)"
-              class="text-white mr-4"
+              @mouseover="toggleMenu(menuItem.name)"
+              class="text-white mr-4 hover:text-gray-300"
           >
             {{ menuItem.name }}
           </button>
@@ -19,7 +21,7 @@
                 v-if="activeMenu === menuItem.name"
                 class="absolute left-0 top-14 right-0 flex grid-rows-2 justify-center lg:justify-end items-center mt-2 bg-white pr-0 shadow-md z-50 flex-col p-5 lg:pr-6 xl:pr-32 md:flex-row text-sm font-semibold text-gray-800"
             >
-              <div class="flex justify-center items-baseline mr-6 lg:mr-24">
+              <div class="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-4 justify-center items-baseline mr-6 lg:mr-24 max-w-[44rem]">
                 <div
                     v-for="(link, linkIndex) in menuItem.subCategory"
                     :key="linkIndex"
@@ -56,11 +58,22 @@ import { useCategory } from '~/composables/useCategory.js';
 const { categories } = useCategory();
 
 const activeMenu = ref(null);
+let subCategoryTimeout = null;
+
 
 // Toggle main menu visibility
 const toggleMenu = (menu) => {
-  activeMenu.value = activeMenu.value === menu ? null : menu;
+  if (subCategoryTimeout) {
+    clearTimeout(subCategoryTimeout);
+    subCategoryTimeout = null;
+  }
+  activeMenu.value = menu;
 };
+
+const closeMenu = () => {
+  subCategoryTimeout = setTimeout(() => {
+    activeMenu.value = null;
+  }, 300);};
 </script>
 
 <style scoped>

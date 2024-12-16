@@ -6,7 +6,7 @@ export function useCategory() {
             {
                 id: 1,
                 name: 'men',
-                image: '/images/new.webp',
+                image: '/images/category2.png',
                 subCategory: [
                     {
                         name: "Shoes",
@@ -54,8 +54,21 @@ export function useCategory() {
             {
                 id: 2,
                 name: 'women',
-                image: '/images/goodDeal.webp',
+                image: '/images/category1.png',
                 subCategory: [
+                    {
+                        name: "Shoes",
+                        subCategory: [
+                            { name: "Classics" },
+                            { name: "Lifestyle" },
+                            { name: "Running" },
+                            { name: "Basketball" },
+                            { name: "Motosport" },
+                            { name: "GV Special" },
+                            { name: "Rider" },
+                            { name: "Sandals" },
+                        ],
+                    },
                     {
                         name: "Clothing",
                         subCategory: [
@@ -66,43 +79,14 @@ export function useCategory() {
                             { name: "Tops" },
                         ],
                     },
-                ],
-            },
-            {
-                id: 3,
-                name: 'kids',
-                image: '/images/kitchen.webp',
-                subCategory: [
                     {
-                        name: "Kids",
+                        name: "Accessories",
                         subCategory: [
                             { name: "Bags & Backpacks" },
                             { name: "Socks" },
                             { name: "Sports Equipment" },
                         ],
                     },
-                ],
-            },
-            {
-                id: 4,
-                name: 'accessories',
-                image: '/images/bedroom.webp',
-                subCategory: [
-                    {
-                        name: "Accessories",
-                        subCategory: [
-                            { name: 'Bags & Backpacks' },
-                            { name: 'Socks' },
-                            { name: 'Sports Equipment' },
-                        ],
-                    },
-                ],
-            },
-            {
-                id: 5,
-                name: 'sale',
-                image: '/images/livingRoom.webp',
-                subCategory: [
                     {
                         name: "Sports",
                         subCategory: [
@@ -116,9 +100,175 @@ export function useCategory() {
                 ],
             },
             {
+                id: 3,
+                name: 'kids',
+                image: '/images/category4.png',
+                subCategory: [
+                    {
+                        name: "Shoes",
+                        subCategory: [
+                            { name: "Classics" },
+                            { name: "Lifestyle" },
+                            { name: "Running" },
+                            { name: "Basketball" },
+                            { name: "Motosport" },
+                            { name: "GV Special" },
+                            { name: "Rider" },
+                            { name: "Sandals" },
+                        ],
+                    },
+                    {
+                        name: "Clothing",
+                        subCategory: [
+                            { name: "Hoodies & Sweatshirts" },
+                            { name: "Jackets" },
+                            { name: "Short" },
+                            { name: "Tracksuits" },
+                            { name: "Tops" },
+                        ],
+                    },
+                    {
+                        name: "Accessories",
+                        subCategory: [
+                            { name: "Bags & Backpacks" },
+                            { name: "Socks" },
+                            { name: "Sports Equipment" },
+                        ],
+                    },
+                    {
+                        name: "Sports",
+                        subCategory: [
+                            { name: 'Soccer' },
+                            { name: 'Yoga' },
+                            { name: 'Golf' },
+                            { name: 'Basketball' },
+                            { name: 'Running' },
+                        ],
+                    },
+                ],
+            },
+            {
+                id: 4,
+                name: 'accessories',
+                image: '/images/category3.png',
+                subCategory: [
+                    {
+                        name: "Shoes",
+                        subCategory: [
+                            { name: "Classics" },
+                            { name: "Lifestyle" },
+                            { name: "Running" },
+                            { name: "Basketball" },
+                            { name: "Motosport" },
+                            { name: "GV Special" },
+                            { name: "Rider" },
+                            { name: "Sandals" },
+                        ],
+                    },
+                    {
+                        name: "Accessories",
+                        subCategory: [
+                            { name: "Bags & Backpacks" },
+                            { name: "Socks" },
+                            { name: "Sports Equipment" },
+                        ],
+                    },
+                    {
+                        name: "Sports",
+                        subCategory: [
+                            { name: 'Soccer' },
+                            { name: 'Yoga' },
+                            { name: 'Golf' },
+                            { name: 'Basketball' },
+                            { name: 'Running' },
+                        ],
+                    },
+                ],            },
+            {
+                id: 5,
+                name: 'sale',
+                image: '/images/category1.png',
+                subCategory: [
+                    {
+                        name: "Shoes",
+                        subCategory: [
+                            { name: "Classics" },
+                            { name: "Lifestyle" },
+                            { name: "Running" },
+                            { name: "Basketball" },
+                            { name: "Motosport" },
+                            { name: "GV Special" },
+                            { name: "Rider" },
+                            { name: "Sandals" },
+                        ],
+                    },
+                    {
+                        name: "Clothing",
+                        subCategory: [
+                            { name: "Hoodies & Sweatshirts" },
+                            { name: "Jackets" },
+                            { name: "Short" },
+                            { name: "Tracksuits" },
+                            { name: "Tops" },
+                        ],
+                    },
+                    {
+                        name: "Accessories",
+                        subCategory: [
+                            { name: "Bags & Backpacks" },
+                            { name: "Socks" },
+                            { name: "Sports Equipment" },
+                        ],
+                    },
+                ],
+            },
+            {
                 id: 6,
                 name: 'gift',
-                image: '/images/lighting.webp',
+                image: '/images/category2.png',
+                subCategory: [
+                    {
+                        name: "Shoes",
+                        subCategory: [
+                            { name: "Classics" },
+                            { name: "Lifestyle" },
+                            { name: "Running" },
+                            { name: "Basketball" },
+                            { name: "Motosport" },
+                            { name: "GV Special" },
+                            { name: "Rider" },
+                            { name: "Sandals" },
+                        ],
+                    },
+                    {
+                        name: "Clothing",
+                        subCategory: [
+                            { name: "Hoodies & Sweatshirts" },
+                            { name: "Jackets" },
+                            { name: "Short" },
+                            { name: "Tracksuits" },
+                            { name: "Tops" },
+                        ],
+                    },
+                    {
+                        name: "Accessories",
+                        subCategory: [
+                            { name: "Bags & Backpacks" },
+                            { name: "Socks" },
+                            { name: "Sports Equipment" },
+                        ],
+                    },
+                    {
+                        name: "Sports",
+                        subCategory: [
+                            { name: 'Soccer' },
+                            { name: 'Yoga' },
+                            { name: 'Golf' },
+                            { name: 'Basketball' },
+                            { name: 'Running' },
+                        ],
+                    },
+                ],
             },
         ],
     });

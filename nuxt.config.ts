@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   css: [
     '~/assets/css/tailwind.css',
-    '@fortawesome/fontawesome-svg-core/styles.css',
+    '@fortawesome/fontawesome-svg-core/styles.css'
   ],
   modules: [
     '@nuxtjs/tailwindcss',
@@ -15,5 +15,8 @@ export default defineNuxtConfig({
       pathPrefix: false,
     },
   ],
+  build: {
+    transpile: ['@fortawesome/vue-fontawesome']
+  },
   plugins: ['~/plugins/fontawesome.js'],
 })

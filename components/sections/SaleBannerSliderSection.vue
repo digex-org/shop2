@@ -35,29 +35,7 @@
       </div>
 
       <div v-else>
-        <div class="group relative">
-          <div class="flex flex-col items-center">
-            <img
-                :src="slide.image"
-                alt="Product Image"
-                class="w-40 md:w-56 lg:w-64 object-cover mb-4 rounded-lg shadow-md"
-                loading="lazy"
-            />
-            <p class="text-gray-800 font-semibold">{{ slide.title }}</p>
-            <p
-                class="font-semibold"
-                :class="slide.originalPrice ? 'text-red-500' : 'text-gray-800'"
-            >
-              <span>FROM ${{ slide.price }}</span>
-              <span
-                  v-if="slide.originalPrice"
-                  class="text-gray-400 ml-2 line-through"
-              >
-                ${{ slide.originalPrice }}
-              </span>
-            </p>
-          </div>
-        </div>
+        <ProductCard :item="slide" :showDescription="false"/>
       </div>
     </swiper-slide>
 
@@ -68,7 +46,6 @@
 </template>
 
 <script setup>
-import { defineProps, computed } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
