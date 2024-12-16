@@ -2,7 +2,7 @@
   <div class="container mx-auto py-10">
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6" :class="limit >= 4 ? 'md:grid-cols-4' : 'md:grid-cols-3'">
       <div v-for="item in limitedProducts" :key="item.id" class="text-center">
-        <ProductCard :item="item"/>
+        <ProductCard :product="item" :view-mode="'grid'"/>
       </div>
     </div>
 

@@ -1,16 +1,16 @@
 import { reactive } from "vue";
 
-export function useCategory() {
+export function useMenus() {
     const state = reactive({
-        categories: [
+        menus: [
             {
                 id: 1,
                 name: 'men',
-                image: '/images/categories/category2.png',
-                subCategory: [
+                image: '/images/category2.png',
+                subMenu: [
                     {
                         name: "Shoes",
-                        subCategory: [
+                        subMenu: [
                             { name: "Classics" },
                             { name: "Lifestyle" },
                             { name: "Running" },
@@ -23,7 +23,7 @@ export function useCategory() {
                     },
                     {
                         name: "Clothing",
-                        subCategory: [
+                        subMenu: [
                             { name: "Hoodies & Sweatshirts" },
                             { name: "Jackets" },
                             { name: "Short" },
@@ -33,7 +33,7 @@ export function useCategory() {
                     },
                     {
                         name: "Accessories",
-                        subCategory: [
+                        subMenu: [
                             { name: "Bags & Backpacks" },
                             { name: "Socks" },
                             { name: "Sports Equipment" },
@@ -41,7 +41,7 @@ export function useCategory() {
                     },
                     {
                         name: "Sports",
-                        subCategory: [
+                        subMenu: [
                             { name: 'Soccer' },
                             { name: 'Yoga' },
                             { name: 'Golf' },
@@ -54,11 +54,11 @@ export function useCategory() {
             {
                 id: 2,
                 name: 'women',
-                image: '/images/categories/category1.png',
-                subCategory: [
+                image: '/images/category1.png',
+                subMenu: [
                     {
                         name: "Shoes",
-                        subCategory: [
+                        subMenu: [
                             { name: "Classics" },
                             { name: "Lifestyle" },
                             { name: "Running" },
@@ -71,7 +71,7 @@ export function useCategory() {
                     },
                     {
                         name: "Clothing",
-                        subCategory: [
+                        subMenu: [
                             { name: "Hoodies & Sweatshirts" },
                             { name: "Jackets" },
                             { name: "Short" },
@@ -81,7 +81,7 @@ export function useCategory() {
                     },
                     {
                         name: "Accessories",
-                        subCategory: [
+                        subMenu: [
                             { name: "Bags & Backpacks" },
                             { name: "Socks" },
                             { name: "Sports Equipment" },
@@ -89,7 +89,7 @@ export function useCategory() {
                     },
                     {
                         name: "Sports",
-                        subCategory: [
+                        subMenu: [
                             { name: 'Soccer' },
                             { name: 'Yoga' },
                             { name: 'Golf' },
@@ -102,11 +102,11 @@ export function useCategory() {
             {
                 id: 3,
                 name: 'kids',
-                image: '/images/categories/category4.png',
-                subCategory: [
+                image: '/images/category4.png',
+                subMenu: [
                     {
                         name: "Shoes",
-                        subCategory: [
+                        subMenu: [
                             { name: "Classics" },
                             { name: "Lifestyle" },
                             { name: "Running" },
@@ -119,7 +119,7 @@ export function useCategory() {
                     },
                     {
                         name: "Clothing",
-                        subCategory: [
+                        subMenu: [
                             { name: "Hoodies & Sweatshirts" },
                             { name: "Jackets" },
                             { name: "Short" },
@@ -129,7 +129,7 @@ export function useCategory() {
                     },
                     {
                         name: "Accessories",
-                        subCategory: [
+                        subMenu: [
                             { name: "Bags & Backpacks" },
                             { name: "Socks" },
                             { name: "Sports Equipment" },
@@ -137,7 +137,7 @@ export function useCategory() {
                     },
                     {
                         name: "Sports",
-                        subCategory: [
+                        subMenu: [
                             { name: 'Soccer' },
                             { name: 'Yoga' },
                             { name: 'Golf' },
@@ -150,11 +150,11 @@ export function useCategory() {
             {
                 id: 4,
                 name: 'accessories',
-                image: '/images/categories/category3.png',
-                subCategory: [
+                image: '/images/category3.png',
+                subMenu: [
                     {
                         name: "Shoes",
-                        subCategory: [
+                        subMenu: [
                             { name: "Classics" },
                             { name: "Lifestyle" },
                             { name: "Running" },
@@ -167,7 +167,7 @@ export function useCategory() {
                     },
                     {
                         name: "Accessories",
-                        subCategory: [
+                        subMenu: [
                             { name: "Bags & Backpacks" },
                             { name: "Socks" },
                             { name: "Sports Equipment" },
@@ -175,7 +175,7 @@ export function useCategory() {
                     },
                     {
                         name: "Sports",
-                        subCategory: [
+                        subMenu: [
                             { name: 'Soccer' },
                             { name: 'Yoga' },
                             { name: 'Golf' },
@@ -187,11 +187,11 @@ export function useCategory() {
             {
                 id: 5,
                 name: 'sale',
-                image: '/images/categories/category1.png',
-                subCategory: [
+                image: '/images/category1.png',
+                subMenu: [
                     {
                         name: "Shoes",
-                        subCategory: [
+                        subMenu: [
                             { name: "Classics" },
                             { name: "Lifestyle" },
                             { name: "Running" },
@@ -204,7 +204,7 @@ export function useCategory() {
                     },
                     {
                         name: "Clothing",
-                        subCategory: [
+                        subMenu: [
                             { name: "Hoodies & Sweatshirts" },
                             { name: "Jackets" },
                             { name: "Short" },
@@ -214,7 +214,7 @@ export function useCategory() {
                     },
                     {
                         name: "Accessories",
-                        subCategory: [
+                        subMenu: [
                             { name: "Bags & Backpacks" },
                             { name: "Socks" },
                             { name: "Sports Equipment" },
@@ -225,11 +225,11 @@ export function useCategory() {
             {
                 id: 6,
                 name: 'gift',
-                image: '/images/categories/category2.png',
-                subCategory: [
+                image: '/images/category2.png',
+                subMenu: [
                     {
                         name: "Shoes",
-                        subCategory: [
+                        subMenu: [
                             { name: "Classics" },
                             { name: "Lifestyle" },
                             { name: "Running" },
@@ -242,7 +242,7 @@ export function useCategory() {
                     },
                     {
                         name: "Clothing",
-                        subCategory: [
+                        subMenu: [
                             { name: "Hoodies & Sweatshirts" },
                             { name: "Jackets" },
                             { name: "Short" },
@@ -252,7 +252,7 @@ export function useCategory() {
                     },
                     {
                         name: "Accessories",
-                        subCategory: [
+                        subMenu: [
                             { name: "Bags & Backpacks" },
                             { name: "Socks" },
                             { name: "Sports Equipment" },
@@ -260,7 +260,7 @@ export function useCategory() {
                     },
                     {
                         name: "Sports",
-                        subCategory: [
+                        subMenu: [
                             { name: 'Soccer' },
                             { name: 'Yoga' },
                             { name: 'Golf' },
@@ -274,6 +274,6 @@ export function useCategory() {
     });
 
     return {
-        categories: state.categories,
+        menus: state.menus,
     };
 }

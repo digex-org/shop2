@@ -5,11 +5,11 @@
     >
       <div class="flex items-start md:items-center py-4 flex-col md:flex-row">
         <div
-            v-for="(menuItem, index) in categories"
+            v-for="(menuItem, index) in menus"
             :key="index"
             class="group"
         >
-          <!-- Category Button -->
+          <!-- menu Button -->
           <button
               @mouseover="toggleMenu(menuItem.name)"
               class="text-white mr-4 hover:text-gray-300"
@@ -23,18 +23,18 @@
             >
               <div class="grid gap-4 grid-cols-2 sm:grid-cols-4 md:grid-cols-4 justify-center items-baseline mr-6 lg:mr-24 max-w-[44rem]">
                 <div
-                    v-for="(link, linkIndex) in menuItem.subCategory"
+                    v-for="(link, linkIndex) in menuItem.subMenu"
                     :key="linkIndex"
                     class="relative group mr-5"
                 >
-                  <!-- Subcategory Name -->
+                  <!-- Submenu Name -->
                   <div class="hover:text-gray-600 flex items-center justify-between w-full lg:w-auto border-b-2 pr-12 lg:pr-24 xl:pr-32">
                     {{ link.name }}
                   </div>
 
-                  <div v-if="link.subCategory" class="mt-2 space-y-1.5">
+                  <div v-if="link.subMenu" class="mt-2 space-y-1.5">
                     <div
-                        v-for="(sublink, subIndex) in link.subCategory"
+                        v-for="(sublink, subIndex) in link.subMenu"
                         :key="subIndex"
                         class="hover:text-gray-600 flex items-center justify-between w-full lg:w-auto font-light cursor-pointer"
                     >
@@ -43,7 +43,7 @@
                   </div>
                 </div>
               </div>
-              <img src="/images/yoga.png" alt="subcategory image" class="object-contain hidden md:block">
+              <img src="/images/yoga.png" alt="submenu image" class="object-contain sm:hidden md:block">
             </div>
         </div>
       </div>
@@ -53,25 +53,25 @@
 
 <script setup>
 import { ref } from 'vue';
-import { useCategory } from '~/composables/useCategory.js';
+import {useMenus} from '~/composables/useMenus'
 
-const { categories } = useCategory();
+const { menus } = useMenus();
 
 const activeMenu = ref(null);
-let subCategoryTimeout = null;
+let subMenuTimeout = null;
 
 
 // Toggle main menu visibility
 const toggleMenu = (menu) => {
-  if (subCategoryTimeout) {
-    clearTimeout(subCategoryTimeout);
-    subCategoryTimeout = null;
+  if (subMenuTimeout) {
+    clearTimeout(subMenuTimeout);
+    subMenuTimeout = null;
   }
   activeMenu.value = menu;
 };
 
 const closeMenu = () => {
-  subCategoryTimeout = setTimeout(() => {
+  subMenuTimeout = setTimeout(() => {
     activeMenu.value = null;
   }, 300);};
 </script>

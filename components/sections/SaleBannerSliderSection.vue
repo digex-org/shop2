@@ -35,7 +35,7 @@
       </div>
 
       <div v-else>
-        <ProductCard :item="slide" :showDescription="false"/>
+        <ProductCard :product="slide" :view-mode="'grid'" :showDescription="false"/>
       </div>
     </swiper-slide>
 

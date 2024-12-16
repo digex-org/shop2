@@ -1,73 +1,115 @@
 <template>
-  <div class="group relative">
-    <div>
-      <img :src="item.image" alt="Product Image" class="w-full h-64 object-cover mb-4 rounded-lg shadow-md" loading="lazy"/>
-      <h3 class="mt-4 text-sm font-bold uppercase">{{ item.title }}</h3>
-      <p class="text-sm font-bold">FROM
-        <span
-            v-if="item.originalPrice"
-            class="text-gray-400 ml-2 line-through"
-        >  ${{ item.originalPrice }} </span>
-        ${{ item.price }}
-      </p>
-      <p v-if="showDescription" class="text-sm text-gray-500">{{ item.description }}</p>
-    </div>
-    <div class="absolute top-2 right-2 flex flex-col items-center opacity-0 group-hover transition-opacity duration-300">
+  <NuxtLink
+      :to="{ name: 'product-product', params: { product: product.id } }"
+      :class="viewMode === 'list' ? 'flex items-center gap-4 p-4 border rounded-lg hover:shadow-md w-full' : ''"
+  >
+    <div class="group relative" :class="viewMode === 'list' ? 'flex w-full' : ''">
+      <!-- Product Image -->
+      <img
+          :src="product.image"
+          alt="Product Image"
+          :class="[
+          'object-cover rounded-lg shadow-md',
+          viewMode === 'grid' ? 'w-full h-64 mb-4' : 'mr-5 h-32'
+        ]"
+          loading="lazy"
+      />
+
+    <!-- Product Info -->
+      <div :class="viewMode === 'list' ? 'flex-1' : ''">
+        <h3
+            class="mt-4 text-sm font-bold uppercase"
+            :class="viewMode === 'list' ? 'mt-0' : ''"
+        >
+          {{ product.title }}
+        </h3>
+        <p class="text-sm font-bold">
+          FROM
+          <span
+              v-if="product.originalPrice"
+              class="text-gray-400 ml-2 line-through"
+          >
+            ${{ product.originalPrice }}
+          </span>
+          ${{ product.price }}
+        </p>
+        <p
+            v-if="showDescription"
+            class="text-sm text-gray-500"
+            :class="viewMode === 'list' ? 'mt-1' : ''"
+        >
+          {{ product.description }}
+        </p>
+      </div>
+
+      <!-- Action Buttons -->
+      <div
+        class="absolute top-2 right-2 flex items-center opacity-0 group-hover transition-opacity duration-300"
+        :class="viewMode === 'list' ? 'flex-row' : 'flex-col'"
+      >
       <button
-          @click.stop="addToWishlist(item)"
+          @click.stop="addToWishlist(product)"
           class="transparent p-2 rounded-full shadow-lg hover-icon"
       >
         <font-awesome-icon :icon="['fas', 'heart']" class="text-black"></font-awesome-icon>
       </button>
 
       <button
-          @click.stop="addToBasket(item)"
+          @click.stop="addToBasket(product)"
           class="transparent p-2 rounded-full shadow-lg hover-icon"
       >
         <font-awesome-icon :icon="['fas', 'shopping-cart']"></font-awesome-icon>
       </button>
 
       <button
-          @click.stop="openQuickView(item)"
+          @click.stop="openQuickView(product)"
           class="transparent p-2 rounded-full shadow-lg hover-icon"
       >
         <font-awesome-icon :icon="['fas', 'eye']"></font-awesome-icon>
       </button>
 
       <button
-          @click.stop="addToComparison(item)"
+          @click.stop="addToComparison(product)"
           class="transparent p-2 rounded-full shadow-lg hover-icon"
       >
         <font-awesome-icon :icon="['fas', 'arrow-right-arrow-left']" />
       </button>
     </div>
-  </div>
+    </div>
+    <!-- Quick View Modal -->
+    <QuickViewModal
+        v-if="showQuickView"
+        :product="selectedItem"
+        @close="closeQuickView"
+    />
+  </NuxtLink>
 
-  <QuickViewModal
-      v-if="showQuickView"
-      :item="selectedItem"
-      @close="closeQuickView"
-  />
 </template>
+
 <script setup>
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { useCart } from "~/composables/useCart.js";
 
 defineProps({
-  item: {
+  product: {
     type: Object,
-    required: true
+    required: true,
   },
   showDescription: {
     type: Boolean,
-    default: true // Default is to show the description
-  }
+    default: true,
+  },
+  viewMode: {
+    type: String,
+    default: "grid",
+  },
 });
+
 let showQuickView = ref(false);
 let selectedItem = ref(null);
 
-const openQuickView = (item) => {
-  selectedItem.value = item;
+const openQuickView = (product) => {
+  selectedItem.value = product;
   showQuickView.value = true;
 };
 
@@ -77,17 +119,16 @@ const closeQuickView = () => {
 };
 
 // Wishlist and Basket Functions
-const addToWishlist = (item) => {
-  console.log('Added to wishlist:', item);
-}
-const addToComparison = (item) => {
-  console.log('Added to comparison list:', item);
+const addToWishlist = (product) => {
+  console.log("Added to wishlist:", product);
+};
+const addToComparison = (product) => {
+  console.log("Added to comparison list:", product);
 };
 
 const { addItem } = useCart();
-const addToBasket = (item) => {
-  console.log('item', item);
-  addItem({ ...item, image: item.image });
+const addToBasket = (product) => {
+  addItem({ ...product, image: product.image });
 };
 </script>
 
@@ -109,4 +150,3 @@ const addToBasket = (item) => {
   color: gray;
 }
 </style>
-
