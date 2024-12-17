@@ -17,7 +17,7 @@
       </div>
 
       <!-- Pagination Controls -->
-      <div class="flex justify-center mt-8 gap-2">
+      <div v-if="totalPages > 1" class="flex justify-center mt-8 gap-2">
         <button
             v-for="page in totalPages"
             :key="page"

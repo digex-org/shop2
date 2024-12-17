@@ -1,24 +1,25 @@
 <template>
-  <NuxtLink
-      :to="{ name: 'product-product', params: { product: product.id } }"
-      :class="viewMode === 'list' ? 'flex items-center gap-4 p-4 border rounded-lg hover:shadow-md w-full' : ''"
-  >
-    <div class="group relative" :class="viewMode === 'list' ? 'flex w-full' : ''">
-      <!-- Product Image -->
-      <div class="overflow-hidden relative">
-        <img
-            :src="product.image"
-            alt="Product Image"
-            :class="[
-            'object-cover rounded-lg shadow-md transition-transform duration-300',
-            viewMode === 'grid' ? 'w-full h-64 mb-4' : 'mr-5 h-32'
-          ]"
-            loading="lazy"
-        />
-      </div>
 
-      <!-- Product Info -->
-      <div :class="viewMode === 'list' ? 'flex-1' : ''">
+    <div class="group relative" :class="viewMode === 'list' ? 'flex w-full' : ''">
+      <NuxtLink
+          :to="{ name: 'product-product', params: { product: product.id } }"
+          :class="viewMode === 'list' ? 'flex items-center gap-4 p-4 border rounded-lg hover:shadow-md w-full' : ''"
+      >
+      <!-- Product Image -->
+        <div class="overflow-hidden relative">
+          <img
+              :src="product.image"
+              alt="Product Image"
+              :class="[
+              'object-cover rounded-lg shadow-md transition-transform duration-300',
+              viewMode === 'grid' ? 'w-full h-64 mb-4' : 'mr-5 h-32'
+            ]"
+              loading="lazy"
+          />
+        </div>
+
+        <!-- Product Info -->
+        <div :class="viewMode === 'list' ? 'flex-1' : ''">
         <h3
             class="mt-4 text-sm font-bold uppercase"
             :class="viewMode === 'list' ? 'mt-0' : ''"
@@ -43,6 +44,7 @@
           {{ product.description }}
         </p>
       </div>
+      </NuxtLink>
 
       <!-- Action Buttons -->
       <div
@@ -82,10 +84,9 @@
     <!-- Quick View Modal -->
     <QuickViewModal
         v-if="showQuickView"
-        :product="selectedItem"
+        :item="selectedItem"
         @close="closeQuickView"
     />
-  </NuxtLink>
 </template>
 
 <script setup>
@@ -111,9 +112,14 @@ let showQuickView = ref(false);
 let selectedItem = ref(null);
 
 const openQuickView = (product) => {
-  selectedItem.value = product;
-  showQuickView.value = true;
+  if (product) {
+    selectedItem.value = product;
+    showQuickView.value = true;
+  } else {
+    console.error("Attempted to open Quick View with an undefined product.");
+  }
 };
+
 
 const closeQuickView = () => {
   showQuickView.value = false;
