@@ -10,6 +10,7 @@ export function useProduct() {
                 price: 85,
                 rating: 4.5,
                 isLimitedTime: true,
+                status: "sale",
                 category: 'New',
                 brand: "Brand A",
                 color: "black",
@@ -25,6 +26,7 @@ export function useProduct() {
                 price: 79,
                 rating: 4.7,
                 isLimitedTime: false,
+                status: "sale",
                 category: 'New',
                 brand: "Brand A",
                 color: "blue",
@@ -40,6 +42,7 @@ export function useProduct() {
                 price: 75,
                 rating: 4.3,
                 isLimitedTime: true,
+                status: "new",
                 category: 'Bedroom',
                 brand: "Brand A",
                 color: "white",
@@ -56,6 +59,7 @@ export function useProduct() {
                 originalPrice: 93,
                 rating: 4.3,
                 isLimitedTime: true,
+                status: "Out of stock",
                 category: 'Lighting',
             },
             {
@@ -68,6 +72,7 @@ export function useProduct() {
                 originalPrice: 125,
                 rating: 4.3,
                 isLimitedTime: true,
+                status: "Out of stock",
                 category: 'Good Deal',
             },
             {
@@ -80,6 +85,7 @@ export function useProduct() {
                 originalPrice: 175,
                 rating: 4.3,
                 isLimitedTime: true,
+                status: "new",
                 category: 'Living Room',
             },
         ]

@@ -5,17 +5,19 @@
   >
     <div class="group relative" :class="viewMode === 'list' ? 'flex w-full' : ''">
       <!-- Product Image -->
-      <img
-          :src="product.image"
-          alt="Product Image"
-          :class="[
-          'object-cover rounded-lg shadow-md',
-          viewMode === 'grid' ? 'w-full h-64 mb-4' : 'mr-5 h-32'
-        ]"
-          loading="lazy"
-      />
+      <div class="overflow-hidden relative">
+        <img
+            :src="product.image"
+            alt="Product Image"
+            :class="[
+            'object-cover rounded-lg shadow-md transition-transform duration-300',
+            viewMode === 'grid' ? 'w-full h-64 mb-4' : 'mr-5 h-32'
+          ]"
+            loading="lazy"
+        />
+      </div>
 
-    <!-- Product Info -->
+      <!-- Product Info -->
       <div :class="viewMode === 'list' ? 'flex-1' : ''">
         <h3
             class="mt-4 text-sm font-bold uppercase"
@@ -44,38 +46,39 @@
 
       <!-- Action Buttons -->
       <div
-        class="absolute top-2 right-2 flex items-center opacity-0 group-hover transition-opacity duration-300"
-        :class="viewMode === 'list' ? 'flex-row' : 'flex-col'"
+          class="absolute top-2 right-2 flex items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          :class="viewMode === 'list' ? 'flex-row' : 'flex-col'"
       >
-      <button
-          @click.stop="addToWishlist(product)"
-          class="transparent p-2 rounded-full shadow-lg hover-icon"
-      >
-        <font-awesome-icon :icon="['fas', 'heart']" class="text-black"></font-awesome-icon>
-      </button>
+        <button
+            @click.stop="addToWishlist(product)"
+            class="transparent p-2 rounded-full shadow-lg hover-icon"
+        >
+          <font-awesome-icon :icon="['fas', 'heart']" class="text-black"></font-awesome-icon>
+        </button>
 
-      <button
-          @click.stop="addToBasket(product)"
-          class="transparent p-2 rounded-full shadow-lg hover-icon"
-      >
-        <font-awesome-icon :icon="['fas', 'shopping-cart']"></font-awesome-icon>
-      </button>
+        <button
+            @click.stop="addToBasket(product)"
+            class="transparent p-2 rounded-full shadow-lg hover-icon"
+        >
+          <font-awesome-icon :icon="['fas', 'shopping-cart']"></font-awesome-icon>
+        </button>
 
-      <button
-          @click.stop="openQuickView(product)"
-          class="transparent p-2 rounded-full shadow-lg hover-icon"
-      >
-        <font-awesome-icon :icon="['fas', 'eye']"></font-awesome-icon>
-      </button>
+        <button
+            @click.stop="openQuickView(product)"
+            class="transparent p-2 rounded-full shadow-lg hover-icon"
+        >
+          <font-awesome-icon :icon="['fas', 'eye']"></font-awesome-icon>
+        </button>
 
-      <button
-          @click.stop="addToComparison(product)"
-          class="transparent p-2 rounded-full shadow-lg hover-icon"
-      >
-        <font-awesome-icon :icon="['fas', 'arrow-right-arrow-left']" />
-      </button>
+        <button
+            @click.stop="addToComparison(product)"
+            class="transparent p-2 rounded-full shadow-lg hover-icon"
+        >
+          <font-awesome-icon :icon="['fas', 'arrow-right-arrow-left']" />
+        </button>
+      </div>
     </div>
-    </div>
+
     <!-- Quick View Modal -->
     <QuickViewModal
         v-if="showQuickView"
@@ -83,7 +86,6 @@
         @close="closeQuickView"
     />
   </NuxtLink>
-
 </template>
 
 <script setup>
@@ -148,5 +150,14 @@ const addToBasket = (product) => {
 
 .hover-icon:hover i.fa-eye {
   color: gray;
+}
+
+/* Zoom Effect */
+.group img {
+  transform: scale(1);
+}
+
+.group:hover img {
+  transform: scale(1.1);
 }
 </style>
