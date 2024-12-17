@@ -1,13 +1,18 @@
 <template>
   <section class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
     <!-- Vertical Thumbnail Navigation -->
-    <div class="flex md:flex-col space-x-2 md:space-y-2 md:space-x-0 overflow-auto">
+    <div class="relative flex md:flex-col space-x-2 md:space-y-2 md:space-x-0 overflow-auto">
       <swiper
           direction="vertical"
           slides-per-view="5"
           free-mode
+          :modules="[Navigation]"
+          :navigation="{
+            prevEl: '.custom-prev',
+            nextEl: '.custom-next',
+          }"
           space-between="10"
-          class="thumbnail-slider max-h-[400px] !hidden md:!block"
+          class="thumbnail-slider max-h-[400px] top-16 !hidden md:!block"
           @swiper="onThumbnailSwiper"
       >
         <swiper-slide
@@ -20,27 +25,36 @@
               :src="image"
               :alt="'Thumbnail ' + index"
               class="rounded-lg object-cover w-16 h-16 border border-gray-200 hover:border-black"
-              :class="index === activeIndex ? 'border-black' : ''"
+              :class="index === activeIndex ? '!border-black border' : ''"
               loading="lazy"
           />
         </swiper-slide>
       </swiper>
-      <!-- Horizontal Thumbnail Navigation for smaller screens -->
-      <div class="flex md:hidden space-x-2 overflow-x-auto">
-        <div
-            v-for="(image, index) in images"
-            :key="index"
-            @click="onThumbnailClick(index)"
-            class="cursor-pointer"
-        >
-          <img
-              :src="image"
-              :alt="'Thumbnail ' + index"
-              class="rounded-lg object-cover w-16 h-16 border border-gray-200 hover:border-black"
-              :class="index === activeIndex ? 'border-black' : ''"
-              loading="lazy"
-          />
-        </div>
+
+      <!-- Vertical Arrows -->
+      <div class="absolute top-10 rotate-90 left-2.5 transform -translate-x-full">
+        <button class="custom-prev swiper-button-prev text-gray-400 hover:text-black"></button>
+      </div>
+      <div class="absolute bottom-32 rotate-90 left-2 transform -translate-x-full">
+        <button class="custom-next swiper-button-next text-gray-400 hover:text-black"></button>
+      </div>
+    </div>
+
+    <!-- Horizontal Thumbnail Navigation for smaller screens -->
+    <div class="flex md:hidden space-x-2 overflow-x-auto">
+      <div
+          v-for="(image, index) in images"
+          :key="index"
+          @click="onThumbnailClick(index)"
+          class="cursor-pointer"
+      >
+        <img
+            :src="image"
+            :alt="'Thumbnail ' + index"
+            class="rounded-lg object-cover w-16 h-16 border border-gray-200 hover:border-black"
+            :class="index === activeIndex ? 'border-black' : ''"
+            loading="lazy"
+        />
       </div>
     </div>
 
@@ -67,10 +81,12 @@
 </template>
 
 <script setup>
-import {ref} from 'vue';
-import {Swiper, SwiperSlide} from 'swiper/vue';
+import { ref, nextTick } from 'vue';
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/free-mode';
+import 'swiper/css/navigation';
 
 const props = defineProps({
   images: {
@@ -87,13 +103,18 @@ const onMainSwiper = (swiper) => {
   mainSwiperInstance.value = swiper;
 };
 
-const onThumbnailSwiper = (swiper) => {
+const onThumbnailSwiper = async (swiper) => {
   thumbnailSwiperInstance.value = swiper;
+
+  // Wait for DOM to render the navigation buttons
+  await nextTick();
+  swiper.navigation.update();
 };
 
 const onSlideChange = () => {
   if (mainSwiperInstance.value) {
-    activeIndex.value = mainSwiperInstance.value.activeIndex % props.images.length;
+    activeIndex.value =
+        mainSwiperInstance.value.activeIndex % props.images.length;
   }
 };
 
@@ -110,6 +131,22 @@ const onThumbnailClick = (index) => {
   width: 64px;
   overflow: hidden;
   height: 100%;
+  position: relative;
+}
+
+.custom-next::after,
+.custom-prev::after {
+font-size: 35px!important;
+}
+
+.swiper-button-prev {
+  left: -32px; /* Position outside the thumbnail slider */
+  top: 16px; /* Adjust to align with the first thumbnail */
+}
+
+.swiper-button-next {
+  left: -32px; /* Position outside the thumbnail slider */
+  bottom: 16px; /* Adjust to align with the last thumbnail */
 }
 
 .main-swiper img {

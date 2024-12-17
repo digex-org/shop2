@@ -132,23 +132,23 @@ const props = defineProps({
 const showShareOptions = ref(false);
 
 // Social platforms and links
-const socialPlatforms = [
-  {
-    name: "Facebook",
-    url: `https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`,
-    icon: ["fab", "facebook"]
-  },
-  {
-    name: "Twitter",
-    url: `https://twitter.com/intent/tweet?url=${window.location.href}&text=${encodeURIComponent(props.product.title)}`,
-    icon: ["fab", "twitter"]
-  },
-  {
-    name: "WhatsApp",
-    url: `https://api.whatsapp.com/send?text=${encodeURIComponent(window.location.href)}`,
-    icon: ["fab", "whatsapp"]
-  }
-];
+// const socialPlatforms = [
+//   {
+//     name: "Facebook",
+//     url: `https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`,
+//     icon: ["fab", "facebook"]
+//   },
+//   {
+//     name: "Twitter",
+//     url: `https://twitter.com/intent/tweet?url=${window.location.href}&text=${encodeURIComponent(props.product.title)}`,
+//     icon: ["fab", "twitter"]
+//   },
+//   {
+//     name: "WhatsApp",
+//     url: `https://api.whatsapp.com/send?text=${encodeURIComponent(window.location.href)}`,
+//     icon: ["fab", "whatsapp"]
+//   }
+// ];
 
 // Toggle the share options dropdown
 const toggleShareOptions = () => {

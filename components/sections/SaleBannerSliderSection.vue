@@ -5,14 +5,14 @@
       :loop="true"
       :autoplay="{ delay: 5000 }"
       class="w-full"
-      :class="responsiveHeight"
+      :class="[responsiveHeight, sliderTypeClass]"
       :pagination="{
-        el: isProductSlide,
+        el: '.swiper-pagination',
         type: 'bullets',
         clickable: true
       }"
       v-bind="settings"
-      :modules="isProductSlide ? [Navigation, Pagination] : []"
+      :modules="[Navigation, Pagination]"
       :navigation="isProductSlide"
   >
     <!-- Slider Items -->
@@ -77,6 +77,9 @@ const responsiveHeight = computed(() =>
         ? 'h-[340px] md:h-[360px] lg:h-[365px]'
         : 'h-[300px] md:h-[90vh] lg:h-screen'
 );
+const sliderTypeClass = computed(() =>
+    isProductSlide.value ? 'product-slider' : 'banner-slider'
+);
 </script>
 
 <style>
@@ -85,18 +88,32 @@ const responsiveHeight = computed(() =>
   text-align: center !important;
 }
 
-.swiper-pagination-bullet {
+.product-slider .swiper-pagination-bullet {
   width: 16%;
   height: 8px;
   margin: 0 !important;
   background-color: #d9d9d9 !important;
-  opacity: 0.6 !important;
+  opacity: 0.8 !important;
   border-radius: 0;
 }
 
-.swiper-pagination-bullet-active {
+.product-slider .swiper-pagination-bullet-active {
   opacity: 1 !important; /* Active line becomes fully opaque */
   background-color: #757575 !important; /* Active line color */
+}
+
+.banner-slider .swiper-pagination-bullet {
+  width: 16%;
+  height: 8px;
+  margin: 3px !important;
+  background-color: #ffffff !important;
+  opacity: 0.8;
+  border-radius: 15px;
+}
+
+.banner-slider .swiper-pagination-bullet-active {
+  opacity: 1 !important; /* Active line becomes fully opaque */
+  background-color: #000000 !important; /* Active line color */
 }
 
 .swiper-button-next,

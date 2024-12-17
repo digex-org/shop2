@@ -21,7 +21,7 @@ export function useProduct() {
                 id: 2,
                 image: '/images/products/product.png',
                 description: 'A stylish wall clock for your living room.',
-                images: ['/images/products/product.png', '/images/products/product.png', '/images/products/product.png'],
+                images: ['/images/products/product.png', '/images/products/product.png', '/images/products/product.png', '/images/products/product.png', '/images/products/product.png', '/images/products/product.png', '/images/products/product.png', '/images/products/product.png', '/images/products/product.png', '/images/products/product.png', '/images/products/product.png'],
                 title: "STOCKING STUFFERS",
                 price: 79,
                 rating: 4.7,
