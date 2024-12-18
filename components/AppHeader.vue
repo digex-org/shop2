@@ -23,7 +23,7 @@
         <!-- Icons Section -->
         <div class="flex items-center justify-between space-x-6">
           <div class="flex items-center space-x-4">
-            <NuxtLink to="/">
+            <NuxtLink to="/cart">
               <client-only>
                 <font-awesome-icon icon="shopping-cart" class="text-white" />
               </client-only>

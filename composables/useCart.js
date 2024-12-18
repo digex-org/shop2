@@ -7,7 +7,7 @@ const state = reactive({
             details: "(Set of 4)",
             sku: 'J001131826',
             name: 'Warrenton Single Light LED Flush Mount',
-            image: '/images/product.webp',
+            image: '/images/products/product.png',
             limitedTime: true,
             price: 63.00,
             originalPrice: 80.00,
